@@ -43,7 +43,7 @@ function getAllFriends($c) {
 $c = connect();
 
 if (!(tableExists($c))) {
-    echo "<p>No database exists yet. Please visit <a href='/Create.php'>this page</a> to create one.</p>";
+    echo "<p>No database exists yet. Please visit <a href='./Create.php'>this page</a> to create one.</p>";
 }
 else {
     echo <<<html

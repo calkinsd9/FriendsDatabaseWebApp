@@ -49,11 +49,11 @@ if (key_exists("firstName", $_POST)){
 }
 else {
     if (!(tableExists($c))) {
-        echo "<p>No database currently exists! <a href='/Create.php'>Click here</a> to create one.</p>";
+        echo "<p>No database currently exists! <a href='./Create.php'>Click here</a> to create one.</p>";
     } else {
         echo <<<html
 <h1>Please enter the following information for your friend:</h1>
-<form action="friendForm.php" method="post">
+<form action="Add.php" method="post">
     First Name: <input type="text" name="firstName" value="" /> <br />
     Last Name: <input type="text" name="lastName" value="" /> <br />
     Phone Number: <input type="text" name="phoneNumber" value="" /> <br />

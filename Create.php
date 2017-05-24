@@ -14,6 +14,10 @@ function connect()
     return $connection;
 }
 function makeTable($c, $option) {
+    $result = $c->query("DROP TABLE friendForm");
+    if (!$result) {
+        die ("Unable to create table: [" . $c->errno . "; ". $c->error . "]");
+    }
     $make_table = "CREATE TABLE friendForm (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, firstName VARCHAR(20), lastName VARCHAR(20), phoneNumber VARCHAR(20), age INT);";
     $result = $c->query($make_table);
     if (!$result) {
@@ -82,7 +86,7 @@ else {
         $numberOfRows = mysqli_num_rows($result);
 
         echo "<p>A database already exists and contains $numberOfRows entries.</p>";
-        echo "<p>(Click <a href='/Display.php'>here</a> to view it.)";
+        echo "<p>(Click <a href='./Display.php'>here</a> to view it.)";
         echo "<p><strong>Creating a new database will overwrite the current one!</strong></p>";
     } else {
         echo "<p>No database currently exists.</p>";
@@ -92,7 +96,7 @@ else {
 
 <br/>
 <br/>
-<form action="/Create.php" method="get">
+<form action="Create.php" method="get">
     <button name="create" type="submit" value="empty">Create Empty Database</button>
     <button name="create" type="submit" value="seeded">Create Seeded Database</button>
 </form>
